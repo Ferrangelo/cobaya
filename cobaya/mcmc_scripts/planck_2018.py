@@ -4,8 +4,11 @@ import numpy as np
 import time 
 import os, sys
 
+yaml_file=sys.argv[1]
+print(f"The yaml file is {yaml_file}")
 
-with open('/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/planck_2018.yaml') as f:
+#with open('/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/planck_2018.yaml') as f:
+with open(yaml_file) as f:
     info = yaml.safe_load(f)
 # print(info)
 

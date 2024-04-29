@@ -148,7 +148,7 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/prova_planck/
+output: chains/prova_bdgphL_gIG_5e-5_alpha8_P18/
 debug: True 
 timing': True
 force: True,
