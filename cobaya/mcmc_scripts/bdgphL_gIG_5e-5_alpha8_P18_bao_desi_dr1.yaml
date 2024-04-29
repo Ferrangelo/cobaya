@@ -116,6 +116,7 @@ params:
       loc: 0.001
       scale: 0.0001
     proposal: 0.00005
+    latex: 1/\alpha_8
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -150,6 +151,6 @@ sampler:
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
 output: chains/prova_bdgphL_gIG_5e-5_alpha8_P18/
-debug: True 
-timing': True
-force: True,
+debug: False 
+timing: True
+force: True
