@@ -297,19 +297,21 @@ class classy(BoltzmannBase):
                 self.extra_args["sBBN file"].format(classy=self.path))
         # Normalize `non_linear` vs `non linear`: prefer underscore
         # Keep this convention throughout the rest of this module!
+	# Aferra mod: prefer non linear to non_linear
         if "non linear" in self.extra_args:
             if "non_linear" in self.extra_args:
                 raise LoggedError(
                     self.log, ("In `extra_args`, only one of `non_linear` or `non linear`"
                                " should be defined."))
-            self.extra_args["non_linear"] = self.extra_args.pop("non linear")
+            # self.extra_args["non_linear"] = self.extra_args.pop("non linear")
+            self.extra_args["non linear"] = self.extra_args.pop("non linear")
         # Normalize non_linear None|False --> "none"
         # Use default one if not specified
-        if self.extra_args.get("non_linear", "dummy_string") in (None, False):
-            self.extra_args["non_linear"] = non_linear_null_value
-        elif ("non_linear" not in self.extra_args or
-              self.extra_args["non_linear"] is True):
-            self.extra_args["non_linear"] = non_linear_default_code
+        if self.extra_args.get("non linear", "dummy_string") in (None, False):
+            self.extra_args["non linear"] = non_linear_null_value
+        elif ("non linear" not in self.extra_args or
+              self.extra_args["non linear"] is True):
+            self.extra_args["non linear"] = non_linear_default_code
         # Derived parameters that may not have been requested, but will be necessary later
         self.derived_extra = []
 
@@ -372,12 +374,12 @@ class classy(BoltzmannBase):
                 # in the future.
                 self.add_z_for_matter_power(v.pop("z"))
                 if v["nonlinear"]:
-                    if "non_linear" not in self.extra_args:
+                    if "non linear" not in self.extra_args:
                         # this is redundant with initialisation, but just in case
-                        self.extra_args["non_linear"] = non_linear_default_code
-                    elif self.extra_args["non_linear"] == non_linear_null_value:
+                        self.extra_args["non linear"] = non_linear_default_code
+                    elif self.extra_args["non linear"] == non_linear_null_value:
                         raise LoggedError(
-                            self.log, ("Non-linear Pk requested, but `non_linear: "
+                            self.log, ("Non-linear Pk requested, but `non linear: "
                                        f"{non_linear_null_value}` imposed in "
                                        "`extra_args`"))
                 pair = k[2:]
@@ -449,11 +451,11 @@ class classy(BoltzmannBase):
                           max(cls[cl] for cl in cls if "b" in cl.lower()) > 50)
         has_lensing = any(("p" in cl.lower()) for cl in cls)
         if (has_BB_l_gt_50 or has_lensing) and \
-           self.extra_args.get("non_linear") == non_linear_null_value:
+           self.extra_args.get("non linear") == non_linear_null_value:
             self.log.warning("Requesting BB for ell>50 or lensing Cl's: "
                              "using a non-linear code is recommended (and you are not "
                              "using any). To activate it, set "
-                             "'non_linear: halofit|hmcode|...' in classy's 'extra_args'.")
+                             "'non linear: halofit|hmcode|...' in classy's 'extra_args'.")
         # Cleanup of products string
         self.extra_args["output"] = " ".join(set(self.extra_args["output"].split()))
         self.check_no_repeated_input_extra()
@@ -525,7 +527,7 @@ class classy(BoltzmannBase):
         # (e.g. complaints if halofit requested but no Cl's computed.) ?????
         # Needed for facilitating post-processing
         if not self.extra_args["output"]:
-            for k in ["non_linear"]:
+            for k in ["non linear"]:
                 self.extra_args.pop(k, None)
         # Prepare parameters to be passed: this-iteration + extra
         args = {self.translate_param(p): v for p, v in params_values_dict.items()}
