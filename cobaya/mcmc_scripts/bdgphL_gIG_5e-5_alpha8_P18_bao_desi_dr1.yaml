@@ -34,13 +34,12 @@ likelihood:
 params:
   logA:
     prior:
-      min: 2.8
-      max: 3.2
+      min: 1.61
+      max: 3.91
     ref:
       dist: norm
-      # loc: 3.0753
-      loc: 3.050252
-      scale: 0.0029
+      loc: 3.05
+      scale: 0.001
     proposal: 0.001
     latex: \log(10^{10} A_\mathrm{s})
     drop: true
@@ -49,46 +48,42 @@ params:
     latex: A_\mathrm{s}
   n_s:
     prior:
-      min: 0.93
-      max: 0.99
+      min: 0.8
+      max: 1.2
     ref:
       dist: norm
-      # loc: 0.96229
-      loc: 9.694426e-01
-      scale: 0.0074
+      loc: 0.965
+      scale: 0.004
     proposal: 0.002
     latex: n_\mathrm{s}
   H0:
     prior:
-      min: 50
-      max: 85
+      min: 20
+      max: 100
     ref:
       dist: norm
-      # loc: 67.802
-      loc: 6.913914e+01
-      scale: 1.2
-    proposal: 1.
+      loc: 67
+      scale: 2
+    proposal: 2
     latex: H_0
   omega_b:
     prior:
-      min: 0.02
-      max: 0.025
+      min: 0.005
+      max: 0.1
     ref:
       dist: norm
-      # loc: 0.022253
-      loc: 2.254900e-02
-      scale: 0.00028
+      loc: 0.0224
+      scale: 0.0001
     proposal: 0.0001
     latex: \Omega_\mathrm{b} h^2
   omega_cdm:
     prior:
-      min: 0.1
-      max: 0.15
+      min: 0.001
+      max: 0.99
     ref:
       dist: norm
-      # loc: 0.11919
-      loc: 1.192011e-01
-      scale: 0.0027
+      loc: 0.12
+      scale: 0.001
     proposal: 0.0005
     latex: \Omega_\mathrm{c} h^2
   Omega_m:
@@ -102,13 +97,12 @@ params:
     latex: Y_\mathrm{P}
   tau_reio:
     prior:
-      min: 0.03
-      max: 0.1
+      min: 0.01
+      max: 0.8
     ref:
       dist: norm
-      # loc: 0.06
-      loc:  5.753180e-02
-      scale: 0.01
+      loc: 0.055
+      scale: 0.006
     proposal: 0.003
     latex: \tau_\mathrm{reio}
   z_reio:
@@ -116,13 +110,13 @@ params:
   one_over_alpha8:
     prior:
       min: 0.
-      max: 0.39
+      max: 1
     ref:
       dist: norm
       # loc: 0.001
       loc: 1.537084e-01
-      scale: 0.0001
-    proposal: 0.00005
+      scale: 0.01
+    proposal: 0.005
     latex: 1/\alpha_8
   sigma8:
     latex: \sigma_8
@@ -160,7 +154,7 @@ sampler:
     covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/bdgphL_gIG_5e-5_alpha8_P18_bao.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1/
+output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_
 debug: False 
 timing: True
 force: True
