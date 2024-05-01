@@ -4,7 +4,7 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=7
 #SBATCH -t 3-07:00:00
-#SBATCH -J prova_planck_2018
+#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
 #SBATCH --export=ALL
 #SBATCH --mem=64000
 #SBATCH --mail-type=ALL
@@ -25,4 +25,6 @@ source /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/code
 
 cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
 mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}
