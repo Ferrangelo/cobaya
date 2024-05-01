@@ -152,10 +152,10 @@ sampler:
     oversample_power: 0.4
     # proposal_scale: 1.9
     proposal_scale: 0.8
-    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/bdgphL_gIG_5e-5_alpha8_P18_bao.covmat
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/base2018TTTEEE_lensing_bao.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag/
+output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_covlcdm/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_covlcdm
 debug: False 
 timing: True
 force: True
