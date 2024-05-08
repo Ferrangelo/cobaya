@@ -14,12 +14,12 @@ theory:
       Z_IG: -1
       n_IG: 0
       beta_BDG: 0.1
-      n_IGG: 0
+      n_IGG: -1
       sigma_ini_IG: 4.593416e+01
       sigma_prime_ini_IG: 1.e-35
-      GR_today: yes
-      shoot_alpha: no
-      shoot_lambda: yes
+      GR_today: 'yes'
+      shoot_alpha: 'no'
+      shoot_lambda: 'yes'
 
 likelihood:
   planck_2018_lowl.TT_clik:
@@ -150,5 +150,5 @@ sampler:
     Rminus1_cl_stop: 0.2
 output: chains/prova_bdgphL_gIG_5e-5_alpha8_P18/
 debug: True 
-timing': True
-force: True,
+timing: True
+force: False,
