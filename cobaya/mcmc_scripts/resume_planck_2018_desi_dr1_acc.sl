@@ -5,6 +5,14 @@
 #SBATCH --cpus-per-task=12
 #SBATCH -t 28-00:00:0
 
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
+
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag
+
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_covlcdm
+
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_nocov
+
 #SBATCH -J lcdm_P18_desi_dr1_drag_covlcdm
 
 #SBATCH --export=ALL
@@ -23,8 +31,13 @@ conda activate bdg
 module load compilers/gcc-12.3_sl7
 source /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/code/plc_3.0/plc-3.1/bin/clik_profile.sh
 
-
 cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_covlcdm.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
+
 YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml
-mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}
+
+mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}
