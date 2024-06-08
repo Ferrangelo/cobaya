@@ -5,18 +5,15 @@
 #SBATCH --cpus-per-task=12
 #SBATCH -t 28-00:00:0
 
-### BDG
-#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
 
-### LCDM
-##SBATCH -J lcdm_P18_desi_dr1_drag_covlcdm
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag
 
-### IG e IG + Delta
-##SBATCH -J dig_V4_P18_desi_dr1
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_covlcdm
 
-### EMG
-##SBATCH -J emg_P18_desi_dr1
-##SBATCH -J emg_P18_desi_dr1_covlcdm
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_nocov
+
+#SBATCH -J lcdm_P18_desi_dr1_drag_covlcdm
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -36,19 +33,11 @@ source /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/code
 
 cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 
-YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_covlcdm.yaml
+#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
 
-### BDG
-YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
-
-### LCDM
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml
-
-### IG e IG + Delta
-#YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1.yaml
-
-### EMG
-#YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1.yaml
-#YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1_cov1.yaml
+YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml
 
 mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}

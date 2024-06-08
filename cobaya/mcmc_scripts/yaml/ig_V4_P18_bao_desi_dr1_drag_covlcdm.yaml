@@ -11,7 +11,7 @@ theory:
       m_ncdm: 0.06
       T_ncdm: 0.71611
       Z_IG: 1
-      n_IG: 0
+      n_IG: 4
 
 likelihood:
   bao.desi_2024_bao_all: null
@@ -109,9 +109,31 @@ params:
       scale: 0.0001
     proposal: 0.0001
     latex: \zeta_\mathrm{IG}
+
   gamma_IG:
     min: 0.
     latex: \xi
+
+  sigma_final_IG:
+    latex: \sigma_0
+  sigma_ini_IG:
+    latex: \sigma_\mathrm{ini}
+  sigma_prime_final_IG:
+    latex: \sigma'_0
+  sigma_prime_ini_IG:
+    latex: \sigma'_\mathrm{ini}
+  G_eff_final:
+    latex: G_\mathrm{eff}(z=0)
+  G_eff_ini:
+    latex: G_\mathrm{eff}(\sigma_\mathrm{ini})
+  Gp_eff_final:
+    latex: \frac{ {\dotG}_\mathrm{eff} }{ G_\mathrm{eff} }(z=0)
+  gamma_pn:
+    latex: \gamma_\mathrm{PN}
+  beta_pn:
+    latex: \beta_\mathrm{PN}
+
+
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -138,16 +160,17 @@ sampler:
     drag: True
     max_samples: .inf
     max_tries: .inf
+    warn_if_tries: 150d
     learn_every: 40d
     output_every: 600s
     learn_proposal: True
     oversample_power: 0.4
-    # proposal_scale: 1.9
-    proposal_scale: 0.8
-    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/base2018TTTEEE_lensing_bao.covmat
+    proposal_scale: 1.9
+    # proposal_scale: 0.8
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/ig_planck2018_TTTEEE_lensing_bao_v3.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/ig_V0_P18_desi_dr1_drag_covlcdm/ig_V0_P18_desi_dr1_drag_covlcdm
-debug: False 
+output: chains/ig_V4_P18_desi_dr1/ig_V4_P18_desi_dr1
+debug: True
 timing: True
 force: False
