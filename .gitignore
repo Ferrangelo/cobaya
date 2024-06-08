@@ -29,3 +29,6 @@ tests/.ipynb_checkpoints
 
 # pytest
 .cache
+
+# data
+cobaya/likelihoods/data
