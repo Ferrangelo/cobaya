@@ -1,0 +1,17 @@
+# SDSS LRG results, measurements from SDSS (BOSS) DR12
+# Also described in Alam et al. 2020
+# https://arxiv.org/pdf/2007.08991 
+# (Table 3, BAO+RSD Measurements part)
+# Considering here only the 2 bins at zeff = 0.38 and 0.51
+# The data have been taken form the official
+# cosmoMC repository used for the SDSS DR16 paper
+# (Alam et al. 2020): https://github.com/evamariam/CosmoMC_SDSS2020
+
+path: null
+measurements_file: bao_data/sdss_DR12_LRG_FSBAO_DMDHfs8.txt
+cov_file: bao_data/sdss_DR12_LRG_FSBAO_DMDHfs8_covtot.txt
+# Fiducial sound horizon with which data have been stored
+rs_fid: 1 #  in Mpc
+# [Optional] Speed in evaluations/second
+# (will be measured automatically if not specified)
+# speed: 2500

@@ -1,0 +1,20 @@
+# SDSS MGS results, measurements from SDSS DR7
+# as described in, Ross et al. 2016 (BAO)
+# https://arxiv.org/pdf/1409.3242
+# and in, Howlett et al. 2015 (RSD).
+# https://arxiv.org/pdf/1409.3238.
+# Also described in Alam et al. 2020
+# https://arxiv.org/pdf/2007.08991 
+# (Table 3, BAO+RSD Measurements part)
+# The data have been taken form the official
+# cosmoMC repository used for the SDSS DR16 paper
+# (Alam et al. 2020): https://github.com/evamariam/CosmoMC_SDSS2020
+
+path: null
+measurements_file: bao_data/sdss_MGS_FS.dat
+cov_file: bao_data/sdss_MGS_FS_cov.txt
+# Fiducial sound horizon with which data have been stored
+rs_fid: 1 #  in Mpc
+# [Optional] Speed in evaluations/second
+# (will be measured automatically if not specified)
+# speed: 2500
