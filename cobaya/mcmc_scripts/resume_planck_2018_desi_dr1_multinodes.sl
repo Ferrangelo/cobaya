@@ -1,17 +1,24 @@
 #!/bin/bash -l
 #SBATCH -p slurmHPC_inf
-#SBATCH --nodes=8
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=32
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=16
 #SBATCH -t 3-07:00:00
 
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
 
-#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag
 
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_covlcdm
 
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_nocov
+
+### EMG
+##SBATCH -J emg_P18_desi_dr1
+#SBATCH -J emg_P18_desi_dr1_covlcdm
+
+### LCDM
+##SBATCH -J lcdm_P18_desi_dr1_drag_covlcdm
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -32,9 +39,18 @@ source /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/code
 
 cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
-YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_covlcdm.yaml
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
+YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
+
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_covlcdm.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
+
+### LCDM
+#YAMLFILE=${YAMLFOLDER}lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml
+
+### EMG
+#YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1.yaml
+YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1_cov1.yaml
 
 mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}

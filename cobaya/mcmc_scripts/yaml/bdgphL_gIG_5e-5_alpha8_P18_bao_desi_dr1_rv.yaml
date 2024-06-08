@@ -1,7 +1,7 @@
 theory:
   classy:
     stop_at_error: False
-    # path: global
+    path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/class_bdg
     ignore_obsolete: True
     extra_args:
       non linear: hmcode
@@ -20,6 +20,7 @@ theory:
       GR_today: 'yes'
       shoot_alpha: 'no'
       shoot_lambda: 'yes'
+      sBBN file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/class_bdg/bbn/sBBN_2017.dat
 
 likelihood:
   bao.desi_2024_bao_all: null
@@ -38,7 +39,7 @@ params:
       max: 3.91
     ref:
       dist: norm
-      loc: 3.05
+      loc: 3.044
       scale: 0.001
     proposal: 0.001
     latex: \log(10^{10} A_\mathrm{s})
@@ -52,7 +53,7 @@ params:
       max: 1.2
     ref:
       dist: norm
-      loc: 0.965
+      loc: 0.9692
       scale: 0.004
     proposal: 0.002
     latex: n_\mathrm{s}
@@ -62,7 +63,7 @@ params:
       max: 100
     ref:
       dist: norm
-      loc: 67
+      loc: 71.1
       scale: 2
     proposal: 2
     latex: H_0
@@ -72,7 +73,7 @@ params:
       max: 0.1
     ref:
       dist: norm
-      loc: 0.0224
+      loc: 0.02249
       scale: 0.0001
     proposal: 0.0001
     latex: \Omega_\mathrm{b} h^2
@@ -82,7 +83,7 @@ params:
       max: 0.99
     ref:
       dist: norm
-      loc: 0.12
+      loc: 0.11895
       scale: 0.001
     proposal: 0.0005
     latex: \Omega_\mathrm{c} h^2
@@ -101,7 +102,7 @@ params:
       max: 0.8
     ref:
       dist: norm
-      loc: 0.055
+      loc: 0.0546
       scale: 0.006
     proposal: 0.003
     latex: \tau_\mathrm{reio}
@@ -110,15 +111,15 @@ params:
   one_over_alpha8:
     prior:
       min: 0.
-      # max: 0.39
-      max: 1
+      max: 0.5
     ref:
       dist: norm
-      # loc: 0.001
-      loc: 1.537084e-01
+      loc: 0.260
       scale: 0.01
     proposal: 0.005
     latex: 1/\alpha_8
+  product_BC_today:
+    latex: \mathcal{B}_0\mathcal{C}_0
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -145,17 +146,15 @@ sampler:
     drag: True
     max_samples: .inf
     max_tries: .inf
-    # warn_if_tries: 150d
     learn_every: 40d
     output_every: 600s
     learn_proposal: True
     oversample_power: 0.4
-    # proposal_scale: 1.9
-    proposal_scale: 0.8
-    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/base2018TTTEEE_lensing_bao.covmat
+    proposal_scale: 1.9
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_covlcdm/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_covlcdm
+output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv
 debug: False 
 timing: True
 force: False

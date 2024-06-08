@@ -4,10 +4,24 @@
 #SBATCH --ntasks-per-node=8
 #SBATCH --cpus-per-task=7
 #SBATCH -t 3-07:00:00
-#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
+
+# LCDM
+##SBATCH -J lcdm_P18_desi_dr1
+#SBATCH -J lcdm_P18_desi_dr1_classig
+
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
+
+##SBATCH -J ig_V4_P18_desi_dr1
+##SBATCH -J ig_V0_P18_desi_dr1
+
+# EMG
+##SBATCH -J emg_P18_desi_dr1
+##SBATCH -J emg_cc_P18_desi_dr1
+
+##SBATCH --mem=64000
+
 #SBATCH --export=ALL
-#SBATCH --mem=64000
-#SBATCH --mail-type=ALL
+#SBATCH --mail-type=NONE
 #SBATCH --mail-user=anferrar@bo.infn.it
 #SBATCH --output=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/err_out/%x_%j.out
 #SBATCH --error=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/err_out/%x_%j.err
@@ -24,7 +38,25 @@ source /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/code
 
 
 cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
-#YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
-YAMLFILE=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
+
+YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
+
+### LCDM
+#YAMLFILE=${YAMLFOLDER}lcdm_P18_bao_desi_dr1.yaml
+YAMLFILE=${YAMLFOLDER}lcdm_P18_bao_desi_dr1_classig.yaml
+
+### BDG
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_covlcdm.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_drag_nocov.yaml
+
+### IG
+#YAMLFILE=${YAMLFOLDER}ig_V0_P18_bao_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_dr1.yaml
+
+### EMG
+#YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}emg_V4_P18_bao_desi_dr1_cov1.yaml
+#YAMLFILE=${YAMLFOLDER}emg_cc_V4_P18_bao_desi_dr1.yaml
+
 mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}

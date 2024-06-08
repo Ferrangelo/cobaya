@@ -1,7 +1,7 @@
 theory:
   classy:
-    stop_at_error: False
-    # path: global
+    stop_at_error: True
+    path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/NMCph/class_dig_2.9.3_v6
     ignore_obsolete: True
     extra_args:
       non linear: hmcode
@@ -10,16 +10,8 @@ theory:
       N_ncdm: 1
       m_ncdm: 0.06
       T_ncdm: 0.71611
-      gamma_IG: 5.e-5
-      Z_IG: -1
-      n_IG: 0
-      beta_BDG: 0.1
-      n_IGG: -1
-      sigma_ini_IG: 4.593416e+01
-      sigma_prime_ini_IG: 1.e-35
-      GR_today: 'yes'
-      shoot_alpha: 'no'
-      shoot_lambda: 'yes'
+      Z_IG: 1
+      n_IG: 4
 
 likelihood:
   bao.desi_2024_bao_all: null
@@ -107,17 +99,41 @@ params:
     latex: \tau_\mathrm{reio}
   z_reio:
     latex: z_\mathrm{re}
-  one_over_alpha8:
+  zeta_IG:
     prior:
       min: 0.
-      max: 0.5
+      max: 0.039
     ref:
       dist: norm
-      # loc: 0.001
-      loc: 1.537084e-01
-      scale: 0.01
-    proposal: 0.005
-    latex: 1/\alpha_8
+      loc: 0.0004
+      scale: 0.0001
+    proposal: 0.0001
+    latex: \zeta_\mathrm{IG}
+
+  gamma_IG:
+    min: 0.
+    latex: \xi
+
+  sigma_final_IG:
+    latex: \sigma_0
+  sigma_ini_IG:
+    latex: \sigma_\mathrm{ini}
+  sigma_prime_final_IG:
+    latex: \sigma'_0
+  sigma_prime_ini_IG:
+    latex: \sigma'_\mathrm{ini}
+  G_eff_final:
+    latex: G_\mathrm{eff}(z=0)
+  G_eff_ini:
+    latex: G_\mathrm{eff}(\sigma_\mathrm{ini})
+  Gp_eff_final:
+    latex: \frac{ {\dotG}_\mathrm{eff} }{ G_\mathrm{eff} }(z=0)
+  gamma_pn:
+    latex: \gamma_\mathrm{PN}
+  beta_pn:
+    latex: \beta_\mathrm{PN}
+
+
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -140,19 +156,47 @@ params:
   rs_drag:
     latex: r_\mathrm{drag}
 sampler:
-  mcmc:
-    drag: True
-    max_samples: .inf
-    max_tries: .inf
-    learn_every: 40d
-    output_every: 600s
-    learn_proposal: True
-    oversample_power: 0.4
-    proposal_scale: 1.9
-    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_nocov.covmat
-    Rminus1_stop: 0.01
-    Rminus1_cl_stop: 0.2
-output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1
+  minimize:
+    # Method: bobyqa|scipy
+    method: bobyqa
+    # Minimizes the full posterior (False) or just the likelihood (True)
+    # Likelihood maximization is subject to prior bounds!
+    ignore_prior: True
+    # Maximum number of iterations (default: practically infinite)
+    max_evals: 1e6d
+    # Number of different starting positions to try minimizing from (may be rounded up if MPI)
+    best_of: 4
+    # Treatment of unbounded parameters: confidence level to use
+    # (Use with care if there are likelihood modes close to the edge of the prior)
+    confidence_for_unbounded: 0.9999995  # 5 sigmas of the prior
+    # Seeding runs
+    # seed:  # an initial seed (entropy) for the numpy random generator
+    # Override keyword arguments for `scipy.optimize.minimize()` or `pybobyqa.solve()` or `iminuit.minimize()`
+    # scipy:
+    #  - https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html
+    #  - options for individual methods
+    # override_scipy:
+    # option: value
+    # bobyqa:
+    #  - https://numericalalgorithmsgroup.github.io/pybobyqa/build/html/userguide.html
+    #  - https://numericalalgorithmsgroup.github.io/pybobyqa/build/html/advanced.html
+    override_bobyqa:
+      # option: value
+      # Relaxed convergence criterion for numerically-noisy likelihoods
+      rhoend: 0.05
+    # iminuit:
+    #  - https://iminuit.readthedocs.io/en/stable/reference.html#scipy-like-interface
+    #  - options for individual methods
+    # override_iminuit:
+    # option: value
+    # File (including path) or matrix defining a covariance matrix for the proposal:
+    # - null (default): will be generated from params info (prior and proposal)
+    # - matrix: remember to set `covmat_params` to the parameters in the matrix
+    # - "auto" (cosmology runs only): will be looked up in a library
+    # In any case, if an old chain its present, its covmat will be loaded instead.
+    # covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/chains/lcdm_P18_desi_dr1_drag_covlcdm/lcdm_P18_desi_dr1_drag_covlcdm.covmat
+    # covmat_params:
+output: chains/ig_V4_P18_desi_dr1/ig_V4_P18_desi_dr1
 debug: False 
 timing: True
-force: False
+force: True

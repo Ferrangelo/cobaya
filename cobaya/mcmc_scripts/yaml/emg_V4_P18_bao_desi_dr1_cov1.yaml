@@ -1,7 +1,7 @@
 theory:
   classy:
     stop_at_error: True
-    # path: global
+    path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/NMCph/class_dig_2.9.3_v7
     ignore_obsolete: True
     extra_args:
       non linear: hmcode
@@ -10,18 +10,13 @@ theory:
       N_ncdm: 1
       m_ncdm: 0.06
       T_ncdm: 0.71611
-      gamma_IG: 5.e-5
-      Z_IG: -1
-      n_IG: 0
-      beta_BDG: 0.1
-      n_IGG: -1
-      sigma_ini_IG: 4.593416e+01
-      sigma_prime_ini_IG: 1.e-35
-      GR_today: 'yes'
-      shoot_alpha: 'no'
-      shoot_lambda: 'yes'
+      Z_IG: 1
+      n_IG: 4
+      delta_Npl: 0
+      sBBN file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/NMCph/class_dig_2.9.3_v7/bbn/sBBN_2017.dat
 
 likelihood:
+  bao.desi_2024_bao_all: null
   planck_2018_lowl.TT_clik:
     clik_file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
   planck_2018_lowl.EE_clik:
@@ -33,12 +28,12 @@ likelihood:
 params:
   logA:
     prior:
-      min: 2.8
-      max: 3.2
+      min: 1.61
+      max: 3.91
     ref:
       dist: norm
-      loc: 3.0753
-      scale: 0.0029
+      loc: 3.05
+      scale: 0.001
     proposal: 0.001
     latex: \log(10^{10} A_\mathrm{s})
     drop: true
@@ -47,42 +42,42 @@ params:
     latex: A_\mathrm{s}
   n_s:
     prior:
-      min: 0.93
-      max: 0.99
+      min: 0.8
+      max: 1.2
     ref:
       dist: norm
-      loc: 0.96229
-      scale: 0.0074
+      loc: 0.965
+      scale: 0.004
     proposal: 0.002
     latex: n_\mathrm{s}
   H0:
     prior:
-      min: 50
-      max: 85
+      min: 20
+      max: 100
     ref:
       dist: norm
-      loc: 67.802
-      scale: 1.2
-    proposal: 1.
+      loc: 67
+      scale: 2
+    proposal: 2
     latex: H_0
   omega_b:
     prior:
-      min: 0.02
-      max: 0.025
+      min: 0.005
+      max: 0.1
     ref:
       dist: norm
-      loc: 0.022253
-      scale: 0.00028
+      loc: 0.0224
+      scale: 0.0001
     proposal: 0.0001
     latex: \Omega_\mathrm{b} h^2
   omega_cdm:
     prior:
-      min: 0.1
-      max: 0.15
+      min: 0.001
+      max: 0.99
     ref:
       dist: norm
-      loc: 0.11919
-      scale: 0.0027
+      loc: 0.12
+      scale: 0.001
     proposal: 0.0005
     latex: \Omega_\mathrm{c} h^2
   Omega_m:
@@ -96,25 +91,56 @@ params:
     latex: Y_\mathrm{P}
   tau_reio:
     prior:
-      min: 0.03
-      max: 0.1
+      min: 0.01
+      max: 0.8
     ref:
       dist: norm
-      loc: 0.06
-      scale: 0.01
+      loc: 0.055
+      scale: 0.006
     proposal: 0.003
     latex: \tau_\mathrm{reio}
   z_reio:
     latex: z_\mathrm{re}
-  one_over_alpha8:
+  gamma_IG:
     prior:
-      min: 0.
-      max: 0.39
+        min: 0.
+        max: 1.
     ref:
       dist: norm
-      loc: 0.001
-      scale: 0.0001
-    proposal: 0.00005
+      loc: 0.18
+      scale: 0.2
+    proposal: 0.1
+    latex: \xi
+  sigma_ini:
+    prior:
+        min: 0.
+        max: 0.9
+    ref:
+      dist: norm
+      loc: 0.5
+      scale: 0.1
+    proposal: 0.05
+    latex: \sigma_i
+  V0:
+    prior:
+        min: 0.6
+        max: 3.5
+    ref:
+      dist: norm
+      loc: 2.2
+      scale: 0.15
+    proposal: 0.08
+    latex: V_0
+
+  sigma_final_IG:
+    latex: \sigma_0
+  sigma_prime_final_IG:
+    latex: \sigma'_0
+  gamma_pn:
+    latex: \gamma_\mathrm{PN}
+  beta_pn:
+    latex: \beta_\mathrm{PN}
+
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -138,17 +164,18 @@ params:
     latex: r_\mathrm{drag}
 sampler:
   mcmc:
-    drag: true
-    max_samples: 1000000
-    max_tries: 250d
-    output_every: 300s
+    drag: True
+    max_samples: .inf
+    max_tries: .inf
+    learn_every: 30d
+    output_every: 600s
     learn_proposal: True
     oversample_power: 0.4
     proposal_scale: 1.9
-    covmat: auto
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/emg_P18_desi_dr1_covlcdm.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/prova_bdgphL_gIG_5e-5_alpha8_P18/
-debug: True 
+output: chains/emg_P18_desi_dr1_cov1/emg_P18_desi_dr1_cov1
+debug: False
 timing: True
-force: False,
+force: False
