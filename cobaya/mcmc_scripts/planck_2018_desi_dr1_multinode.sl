@@ -1,15 +1,15 @@
 #!/bin/bash -l
 #SBATCH -p slurmHPC_inf
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=7
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=2
+#SBATCH --cpus-per-task=16
 #SBATCH -t 3-07:00:00
 
 # BDG
-##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
+#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
 
 # LCDM
-#SBATCH -J lcdm_P18_desi_sdss_combo
+##SBATCH -J lcdm_P18_desi_sdss_combo
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -32,9 +32,9 @@ cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
 
 # BDG
-#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_sdss_combo.yaml
+YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_sdss_combo.yaml
 
 # LCDM
-YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_sdss_combo.yaml
+#YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_sdss_combo.yaml
 
 mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}
