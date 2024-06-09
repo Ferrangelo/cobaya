@@ -1,8 +1,8 @@
 theory:
   classy:
-    stop_at_error: False
-    # path: global
-    ignore_obsolete: True
+    stop_at_error: false
+    path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/class_bdg
+    ignore_obsolete: true
     extra_args:
       non linear: hmcode
       nonlinear_min_k_max: 20
@@ -10,17 +10,6 @@ theory:
       N_ncdm: 1
       m_ncdm: 0.06
       T_ncdm: 0.71611
-      gamma_IG: 5.e-5
-      Z_IG: -1
-      n_IG: 0
-      beta_BDG: 0.1
-      n_IGG: -1
-      sigma_ini_IG: 4.593416e+01
-      sigma_prime_ini_IG: 1.e-35
-      GR_today: 'yes'
-      shoot_alpha: 'no'
-      shoot_lambda: 'yes'
-
 likelihood:
   bao.desi_2024_bao_all: null
   planck_2018_lowl.TT_clik:
@@ -107,17 +96,6 @@ params:
     latex: \tau_\mathrm{reio}
   z_reio:
     latex: z_\mathrm{re}
-  one_over_alpha8:
-    prior:
-      min: 0.
-      max: 1
-    ref:
-      dist: norm
-      # loc: 0.001
-      loc: 1.537084e-01
-      scale: 0.01
-    proposal: 0.005
-    latex: 1/\alpha_8
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -141,20 +119,18 @@ params:
     latex: r_\mathrm{drag}
 sampler:
   mcmc:
-    drag: True
+    drag: true
     max_samples: .inf
     max_tries: .inf
-    # warn_if_tries: 150d
-    learn_every: 30d
+    learn_every: 40d
     output_every: 600s
-    learn_proposal: True
+    learn_proposal: true
     oversample_power: 0.4
-    # proposal_scale: 1.9
-    proposal_scale: 0.6
-    # covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/bdgphL_gIG_5e-5_alpha8_P18_bao.covmat
+    proposal_scale: 1.9
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/lcdm_P18_desi_dr1_drag_covlcdm.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_nocov/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_drag_nocov
-debug: False 
+output: chains/lcdm_P18_desi_dr1/lcdm_P18_desi_dr1
+debug: false 
 timing: True
 force: False
