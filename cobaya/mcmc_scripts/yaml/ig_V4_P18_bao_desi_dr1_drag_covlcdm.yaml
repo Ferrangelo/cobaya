@@ -160,7 +160,6 @@ sampler:
     drag: True
     max_samples: .inf
     max_tries: .inf
-    warn_if_tries: 150d
     learn_every: 40d
     output_every: 600s
     learn_proposal: True

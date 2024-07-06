@@ -1,19 +1,24 @@
 #!/bin/bash -l
-#SBATCH -p slurmHPC_inf
+#SBATCH -p slurm_hpc_acc
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=4
-#SBATCH -t 3-07:00:00
+#SBATCH --cpus-per-task=12
+#SBATCH -t 28-00:00:0
 
 # BDG
-##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
+##SBATCH -J bf_bdgphL_gIG_5_e-5_alpha8_P18_desi_rv
+##SBATCH -J bf_bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
+#SBATCH -J bf_bdgphL_gIG_5_e-5_alpha8_P18_desi_H0
 
 # IG and DIG
-##SBATCH -J ig_P18_desi_sdss_combo
-#SBATCH -J dig_P18_desi_sdss_combo
+##SBATCH -J bf_ig_P18_desi_sdss_combo
+##SBATCH -J bf_ig_P18_desi_H0
+##SBATCH -J bf_dig_P18_desi_sdss_combo
 
 # LCDM
-##SBATCH -J lcdm_P18_desi_sdss_combo
+##SBATCH -J bf_lcdm_P18_desi_sdss_combo
+##SBATCH -J bf_lcdm_P18_desi_H0
+##SBATCH -J bf_lcdm_P18_desi
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -36,13 +41,17 @@ cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
 
 # BDG
+#YAMLFILE=${YAMLFOLDER}bf_bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv.yaml
 #YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1_sdss_combo.yaml
+YAMLFILE=${YAMLFOLDER}bf_bdgphL_gIG_5e-5_alpha8_P18_desi_H0.yaml
 
 # IG and DIG
 #YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_dr1_sdss_combo.yaml
-YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
+#YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
+#YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
 
 # LCDM
-#YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_sdss_combo.yaml
+#YAMLFILE=${YAMLFOLDER}bf_lcdm_P18_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}bf_lcdm_P18_desi_dr1_sdss_combo.yaml
 
 mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}

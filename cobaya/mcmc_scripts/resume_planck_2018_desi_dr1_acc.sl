@@ -2,8 +2,10 @@
 #SBATCH -p slurm_hpc_acc
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=12
+#SBATCH --cpus-per-task=8
 #SBATCH -t 28-00:00:0
+#SBATCH --exclude=hpc-201-11-17-a,hpc-201-11-17-b,hpc-201-11-18-a,hpc-201-11-18-b,hpc-201-11-19-b,hpc-201-11-20-a,hpc-201-11-20-b,hpc-201-11-21-a,hpc-201-11-21-b,hpc-201-11-22-a,hpc-201-11-22-b
+
 
 # BDG
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
@@ -11,7 +13,8 @@
 ##SBATCH -J bdgphL_P18_desi
 
 # EMG
-#SBATCH -J emg_cc_P18_desi
+##SBATCH -J emg_cc_P18_desi
+#SBATCH -J emg_P18_desi
 
 # LCDM
 ##SBATCH -J lcdm_P18_desi_dr1_covlcdm
@@ -42,7 +45,9 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 #YAMLFILE=${YAMLFOLDER}bdgphL_P18_desi_dr1.yaml
 
 # EMG
-YAMLFILE=${YAMLFOLDER}emg_cc_P18_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}emg_cc_P18_desi_dr1.yaml
+YAMLFILE=${YAMLFOLDER}emg_P18_desi_dr1_cov1.yaml
+
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml

@@ -1,6 +1,6 @@
 theory:
   classy:
-    stop_at_error: True
+    stop_at_error: false
     path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/NMCph/class_dig_2.9.3_v6
     ignore_obsolete: True
     extra_args:
@@ -11,10 +11,15 @@ theory:
       m_ncdm: 0.06
       T_ncdm: 0.71611
       Z_IG: 1
-      n_IG: 0
-
+      n_IG: 4
 likelihood:
-  bao.desi_2024_bao_all: null
+  bao.sdss_mgs_fs: null
+  bao.sdss_dr12_lrg_fs_bao_dmdhfs8: null
+  bao.desi_2024_bao_lrg_z2: null
+  bao.desi_2024_bao_lrgpluselg_z1: null
+  bao.desi_2024_bao_elg_z2: null
+  bao.desi_2024_bao_qso_z1: null
+  bao.desi_2024_eboss_bao_lya: null
   planck_2018_lowl.TT_clik:
     clik_file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
   planck_2018_lowl.EE_clik:
@@ -23,6 +28,7 @@ likelihood:
     clik_file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik
   planck_2018_lensing.clik:
     clik_file: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing
+
 params:
   logA:
     prior:
@@ -109,9 +115,31 @@ params:
       scale: 0.0001
     proposal: 0.0001
     latex: \zeta_\mathrm{IG}
+
   gamma_IG:
     min: 0.
     latex: \xi
+
+  sigma_final_IG:
+    latex: \sigma_0
+  sigma_ini_IG:
+    latex: \sigma_\mathrm{ini}
+  sigma_prime_final_IG:
+    latex: \sigma'_0
+  sigma_prime_ini_IG:
+    latex: \sigma'_\mathrm{ini}
+  G_eff_final:
+    latex: G_\mathrm{eff}(z=0)
+  G_eff_ini:
+    latex: G_\mathrm{eff}(\sigma_\mathrm{ini})
+  Gp_eff_final:
+    latex: \frac{ {\dotG}_\mathrm{eff} }{ G_\mathrm{eff} }(z=0)
+  gamma_pn:
+    latex: \gamma_\mathrm{PN}
+  beta_pn:
+    latex: \beta_\mathrm{PN}
+
+
   sigma8:
     latex: \sigma_8
   s8h5:
@@ -135,19 +163,18 @@ params:
     latex: r_\mathrm{drag}
 sampler:
   mcmc:
-    drag: True
+    drag: true
     max_samples: .inf
     max_tries: .inf
     learn_every: 40d
     output_every: 600s
     learn_proposal: True
     oversample_power: 0.4
-    # proposal_scale: 1.9
-    proposal_scale: 0.8
-    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/base2018TTTEEE_lensing_bao.covmat
+    proposal_scale: 1.9
+    covmat: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/covmats/ig_V4_P18_desi_dr1.covmat
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
-output: chains/ig_V0_P18_desi_dr1_drag_covlcdm/ig_V0_P18_desi_dr1_drag_covlcdm
-debug: False 
-timing: True
-force: False
+output: chains/ig_V4_P18_desi_sdss_comb/ig_V4_P18_desi_sdss_comb
+debug: false
+timing: true
+force: false

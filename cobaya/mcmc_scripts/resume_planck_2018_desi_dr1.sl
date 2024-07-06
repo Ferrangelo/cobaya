@@ -8,12 +8,18 @@
 # BDG
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
 
+# IG and DIG
+##SBATCH -J ig_P18_desi_sdss_combo
+#SBATCH -J dig_P18_desi_sdss_combo
+
 # EMG
-#SBATCH -J emg_P18_desi
+##SBATCH -J emg_P18_desi
+##SBATCH -J emg_cc_P18_desi
 
 # LCDM
 ##SBATCH -J lcdm_P18_desi_dr1
 ##SBATCH -J lcdm_P18_desi_dr1_classig
+##SBATCH -J lcdm_P18_desi_sdss_combo
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -36,12 +42,17 @@ cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
 
 # EMG
-YAMLFILE=${YAMLFOLDER}emg_P18_desi_dr1_cov1.yaml
+#YAMLFILE=${YAMLFOLDER}emg_P18_desi_dr1_cov1.yaml
 #YAMLFILE=${YAMLFOLDER}emg_cc_P18_desi_dr1.yaml
+
+# IG and DIG
+#YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_dr1_sdss_combo.yaml
+YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_bao_desi_dr1_drag_covlcdm.yaml
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1.yaml
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_classig.yaml
+#YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_sdss_combo.yaml
 
 mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}

@@ -7,11 +7,11 @@
 #SBATCH --exclude=hpc-200-06-26,hpc-200-06-27,hpc-200-06-28,hpc-200-06-29
 
 # BDG
-#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
-##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag
-##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_covlcdm
-##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1_drag_nocov
+#SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
+
+# DIG
+##SBATCH -J dig_P18_desi_H0
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -37,5 +37,8 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 # BDG
 #YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_bao_desi_dr1.yaml
 YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_sdss_combo.yaml
+
+# IG and DIG
+#YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
 
 mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}

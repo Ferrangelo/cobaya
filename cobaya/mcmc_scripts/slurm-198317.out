@@ -1,0 +1,23 @@
+/home/HPC/aferrari/.bash_profile: line 5: bind: warning: line editing not enabled
+[?1034h/home/HPC/aferrari/.bash_profile: line 6: bind: warning: line editing not enabled
+/var/spool/slurmd/job198317/slurm_script: line 18: SBATCH: command not found
+SLURM_JOBID=198317
+SLURM_JOB_NODELIST=hpc-200-06-28
+SLURM_NNODES=1
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+The yaml file is /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/lcdm_P18_desi_dr1_sdss_combo.yaml
+rank 0
+rank 1
+rank 2
+rank 3
+rank 4
+rank 5
+rank 6
+rank 7
+slurmstepd: error: *** JOB 198317 ON hpc-200-06-28 CANCELLED AT 2024-06-18T10:49:51 ***

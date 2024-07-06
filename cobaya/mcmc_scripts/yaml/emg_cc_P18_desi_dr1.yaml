@@ -1,6 +1,6 @@
 theory:
   classy:
-    stop_at_error: true
+    stop_at_error: false
     path: /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/NMCph/class_dig_2.9.3_v7
     ignore_obsolete: true
     extra_args:
