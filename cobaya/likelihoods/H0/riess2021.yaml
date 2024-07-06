@@ -1,0 +1,9 @@
+# Riess et al (2021) value of H0 = 73.04 +/- 1.04 km/s/Mpc
+# https://arxiv.org/abs/2112.04510
+
+H0_mean: 73.04
+H0_std: 1.04
+# Aliases for automatic covariance matrix
+aliases: [Riess18]
+# Speed in evaluations/second
+speed: 4500
