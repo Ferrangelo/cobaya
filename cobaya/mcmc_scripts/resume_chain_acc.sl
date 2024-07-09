@@ -1,16 +1,17 @@
 #!/bin/bash -l
-#SBATCH -p slurmHPC_inf
+#SBATCH -p slurm_hpc_acc
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
-#SBATCH --cpus-per-task=7
-#SBATCH -t 3-07:00:00
+#SBATCH --cpus-per-task=12
+#SBATCH -t 28-00:00:0
 
 # BDG
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
+#SBATCH -J bdgphL_P18_desi_dr1
 
 # IG and DIG
 ##SBATCH -J ig_P18_desi_sdss_combo
-#SBATCH -J dig_P18_desi_sdss_combo
+##SBATCH -J dig_P18_desi_sdss_combo
 ##SBATCH -J ig_P18_desi_H0
 
 # EMG
@@ -43,6 +44,9 @@ cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 
 YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
 
+# BDG
+YAMLFILE=${YAMLFOLDER}bdgphL_P18_desi_dr1.yaml
+
 # EMG
 #YAMLFILE=${YAMLFOLDER}emg_P18_desi_dr1_cov1.yaml
 #YAMLFILE=${YAMLFOLDER}emg_cc_P18_desi_dr1.yaml
@@ -50,7 +54,7 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 # IG and DIG
 #YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_dr1_sdss_combo.yaml
 #YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
-YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
+#YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1.yaml
