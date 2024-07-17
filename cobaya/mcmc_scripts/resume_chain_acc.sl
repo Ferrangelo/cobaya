@@ -7,12 +7,14 @@
 
 # BDG
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_dr1
-#SBATCH -J bdgphL_P18_desi_dr1
+##SBATCH -J bdgphL_P18_desi_dr1
+##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
 
 # IG and DIG
 ##SBATCH -J ig_P18_desi_sdss_combo
 ##SBATCH -J dig_P18_desi_sdss_combo
 ##SBATCH -J ig_P18_desi_H0
+#SBATCH -J dig_P18_desi_H0
 
 # EMG
 ##SBATCH -J emg_P18_desi
@@ -45,7 +47,8 @@ cd /gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya
 YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/cobaya/mcmc_scripts/yaml/
 
 # BDG
-YAMLFILE=${YAMLFOLDER}bdgphL_P18_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_P18_desi_dr1.yaml
+#YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_sdss_combo.yaml
 
 # EMG
 #YAMLFILE=${YAMLFOLDER}emg_P18_desi_dr1_cov1.yaml
@@ -55,6 +58,7 @@ YAMLFILE=${YAMLFOLDER}bdgphL_P18_desi_dr1.yaml
 #YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_dr1_sdss_combo.yaml
 #YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
 #YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
+YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1.yaml

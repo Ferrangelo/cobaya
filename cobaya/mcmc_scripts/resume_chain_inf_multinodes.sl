@@ -1,8 +1,8 @@
 #!/bin/bash -l
 #SBATCH -p slurmHPC_inf
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=2
-#SBATCH --cpus-per-task=16
+#SBATCH --nodes=8
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=32
 #SBATCH -t 3-07:00:00
 #SBATCH --exclude=hpc-200-06-26,hpc-200-06-27,hpc-200-06-28,hpc-200-06-29
 
@@ -11,8 +11,8 @@
 ##SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
 
 # DIG
-#SBATCH -J ig_P18_desi_H0
-##SBATCH -J dig_P18_desi_H0
+##SBATCH -J ig_P18_desi_H0
+#SBATCH -J dig_P18_desi_H0
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -40,7 +40,7 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 #YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_sdss_combo.yaml
 
 # IG and DIG
-YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
-#YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
+#YAMLFILE=${YAMLFOLDER}ig_V4_P18_bao_desi_H0.yaml
+YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
 
 mpirun python mcmc_scripts/resume_chain.py ${YAMLFILE}
