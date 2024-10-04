@@ -4,6 +4,7 @@
 #SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=8
 #SBATCH -t 3-07:00:00
+#SBATCH --exclude=hpc-200-06-16,hpc-200-06-24,hpc-200-06-05,hpc-200-06-26
 
 # BDG
 #SBATCH -J bdgphL_gIG_5_e-5_alpha8_P18_desi_sdss_combo
@@ -12,7 +13,11 @@
 ##SBATCH -J lcdm_P18_desi_sdss_combo
 
 # DIG
-#SBATCH -J dig_P18_desi_H0
+##SBATCH -J dig_P18_desi_H0
+
+# EMG
+##SBATCH -J emg_cc_P18_desi_H0
+#SBATCH -J emg_P18_desi_wideV0
 
 #SBATCH --export=ALL
 ##SBATCH --mem=64000
@@ -38,9 +43,13 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 #YAMLFILE=${YAMLFOLDER}bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_sdss_combo.yaml
 
 # IG and DIG
-YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
+#YAMLFILE=${YAMLFOLDER}dig_V4_P18_bao_desi_H0.yaml
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}lcdm_P18_desi_dr1_sdss_combo.yaml
+
+# EMG
+#YAMLFILE=${YAMLFOLDER}emg_cc_P18_desi_H0.yaml
+YAMLFILE=${YAMLFOLDER}emg_P18_desi_wideV0.yaml 
 
 mpirun python mcmc_scripts/read_yaml_and_run_chain.py ${YAMLFILE}

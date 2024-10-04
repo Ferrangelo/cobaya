@@ -13,7 +13,11 @@
 # IG and DIG
 ##SBATCH -J bf_ig_P18_desi_sdss_combo
 ##SBATCH -J bf_dig_P18_desi_sdss_combo
-#SBATCH -J bf_ig_P18_desi_H0
+##SBATCH -J bf_ig_P18_desi_H0
+
+# EMG
+##SBATCH -J bf_emg_P18_desi
+#SBATCH -J bf_emg_cc_P18_desi
 
 # LCDM
 ##SBATCH -J bf_lcdm_P18_desi_sdss_combo
@@ -47,7 +51,11 @@ YAMLFOLDER=/gpfs/gpfs/gpfs_maestro/hpc/user/modified_gravity/angelo/BDG/cobaya/c
 
 # IG and DIG
 #YAMLFILE=${YAMLFOLDER}bf_dig_V4_P18_bao_desi_dr1_sdss_combo.yaml
-YAMLFILE=${YAMLFOLDER}bf_ig_V4_P18_bao_desi_H0.yaml
+#YAMLFILE=${YAMLFOLDER}bf_ig_V4_P18_bao_desi_H0.yaml
+
+# EMG
+#YAMLFILE=${YAMLFOLDER}bf_emg_P18_desi.yaml
+YAMLFILE=${YAMLFOLDER}bf_emg_cc_P18_desi.yaml
 
 # LCDM
 #YAMLFILE=${YAMLFOLDER}bf_lcdm_P18_desi_dr1.yaml

@@ -152,4 +152,4 @@ sampler:
 output: chains/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv/bdgphL_gIG_5e-5_alpha8_P18_desi_dr1_rv
 debug: false 
 timing: true
-force: false
+force: true
